@@ -70,6 +70,12 @@ public class Order {
 			continueOrder();
 			break;
 		case "7":
+			foodOrdered.add(selection[6]);
+			foodCosts.add(costs[6]);
+			System.out.println(selection[6] + " has been added to your order.\n");
+			continueOrder();
+			break;
+		case "8":
 			System.out.println("Cancelled.");
 			ros.mainMenu();
 			break;
@@ -91,7 +97,7 @@ public class Order {
 			break;
 		case "2":	//finishes order and prints receipt
 			printReceipt();
-			ros.mainMenu();	//REMOVE THIS LATER ONLY FOR TESTING **********************************************************
+			//ros.mainMenu();	//REMOVE THIS LATER ONLY FOR TESTING **********************************************************
 			break;
 		default:	//throws error at if user doesn't input 1 or 2
 			System.out.println("Invalid selection. Please use 1 for yes or 2 for no.");
@@ -123,35 +129,53 @@ public class Order {
 		
 	}
 	
+	//getter for addItem and removeItem allowing user to edit order
+	public void editOrder() {
+		System.out.println("How would you like to change your order? \n1 - Add to order \n2 - Remove from order");
+		i = scan.next();
+		
+		switch(i) {
+		case "1":
+			addItem();
+			break;
+		case "2":
+			//removeItem();
+			System.out.println("Not yet implemented.");
+			ros.mainMenu();
+			break;
+		default:
+			System.out.println("Invalid selection.");
+			editOrder();
+		}
+	}
+	
 	//allows user to add to their order
 	private void addItem() {
 		menu.printMenu();
 		placeOrder();
 	}
 	
+	/*
 	//allows user to remove items from their order
-	public void removeItem() {
+	private void removeItem() {
+
 		System.out.println("Your order: ");
 		
-		//prints current order
-		for(int i = 0; i < foodOrdered.size(); i++)	 
-			System.out.println(i + " - " + foodOrdered.get(i));
+		for(int y = 0; y < foodOrdered.size(); y++)	 
+			System.out.println(foodOrdered.get(y) + " - $" + foodCosts.get(y));
 		
-		System.out.print("What would you like to remove: ");
+		System.out.println("What would you like to remove?");
 		i = scan.next();
 		
 		try {
-			System.out.println(foodOrdered.indexOf(i) + " was remove from your order.");
+			Integer.parseInt(i);	//converts user input to string for validation
+			System.out.println(foodOrdered.indexOf(i) + " has been removed from your order.");
 			foodOrdered.remove(i);
+			printReceipt();
 		}
 		catch(Exception e) {
-			System.out.println("Invalid Selection");
-			removeItem();
-		}
-		
-		System.out.println(foodOrdered);
-		
-		
+			System.out.println("Invalid seletion, please order with the numbers presented.");
+		}	
 	}
-
+	*/
 }

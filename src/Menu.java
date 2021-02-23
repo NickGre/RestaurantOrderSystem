@@ -1,6 +1,7 @@
 public class Menu {
 	//array containing food options for user
 	private String foods[] = {
+			" ",
 			"Steak",
 			"Soup",
 			"Grilled Chicken",
@@ -13,6 +14,7 @@ public class Menu {
 	
 	//array containing prices for food options, matches by array index
 	private double prices[] = {
+			0.00,	//placeholder to skip 0 index of array
 			8.99,	//steak
 			3.99,	//soup
 			6.99,	//grilled chicken
@@ -24,7 +26,7 @@ public class Menu {
 	
 	//gets foods & prices and prints both lists side by side
 	public void printMenu() {
-		for(int i = 0; i < foods.length; i++) {
+		for(int i = 1; i < foods.length; i++) {
 			if(i < prices.length) {
 				System.out.println( i + " - "+ foods[i] + " - $" + prices[i]);
 			}

@@ -31,7 +31,7 @@ public class RestaurantOrderSystem {
 			order.placeOrder();
 			break;
 		case "3":
-			order.removeItem();
+			order.editOrder();
 			break;
 		case "4":
 			System.out.println("Goodbye.");
